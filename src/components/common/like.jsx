@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 // Input> Liked: boolean
 // Output: onClick
@@ -8,7 +8,7 @@ const Like = (props) => {
   if (!props.liked) classes += "-o";
   return (
     <i
-      onClick={this.onClick}
+      onClick={props.onClick}
       style={{ cursor: "pointer" }}
       className={classes}
       aria-hidden="true"
