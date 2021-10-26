@@ -12,18 +12,22 @@ class Movies extends Component {
     genres: [],
     pageSize: 4,
     currentPage: 1,
+    selectedGenre: [],
   };
 
+  // * comp method (made for filtering)
   componentDidMount() {
     const genres = [{ name: "All Genres" }, ...getGenres()];
     this.setState({ movies: getMovies(), genres });
   }
 
+  // * comp method
   handleDelete = (movie) => {
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
     this.setState({ movies });
   };
 
+  // & raised for LIKE
   handleLike = (movie) => {
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
@@ -32,10 +36,12 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
+  // & raised for PAGINATION
   handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
 
+  // & raised for LISTGROUP (filtering)
   handleGenreSelect = (genre) =>
     this.setState({ selectedGenre: genre, currentPage: 1 });
 
